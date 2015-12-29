@@ -1,23 +1,28 @@
 package com.example.whhsfbla.fashionnow;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.parse.Parse;
 
 public class MainActivity extends Activity {
 
     SharedPreferences settings;
     Intent intent;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Parse.enableLocalDatastore(this);
+        Parse.initialize(this);
         /*Parse.enableLocalDatastore(this);
 
         Parse.initialize(this);
@@ -26,11 +31,17 @@ public class MainActivity extends Activity {
         testObject.put("String", "Object");
         testObject.saveInBackground(); */
 
-        final String PREFS_NAME = "MyPrefsFile";
+        context = this.getApplicationContext();
+        intent = new Intent(context, WelcomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+        finish();
+
+        /*final String PREFS_NAME = "MyPrefsFile";
 
         settings = getSharedPreferences(PREFS_NAME, 0);
 
-        if (settings.getBoolean("my_first_time", true)) {
+        if(settings.getBoolean("my_first_time", true)) {
             //the app is being launched for first time, do something
             Log.d("Comments", "First time");
 
@@ -39,7 +50,7 @@ public class MainActivity extends Activity {
             this.getApplicationContext().startActivity(intent);
             // record the fact that the app has been started at least once
             settings.edit().putBoolean("my_first_time", false).commit();
-        }
+        } */
 
     }
 

@@ -43,6 +43,7 @@ public class WelcomeActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), SignUpActivity.class);
+                view.getContext().startActivity(intent);
             }
         });
 
