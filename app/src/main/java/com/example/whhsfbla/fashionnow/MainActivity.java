@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 //test
+//marlin comment
 public class MainActivity extends Activity {
 
     @Override
