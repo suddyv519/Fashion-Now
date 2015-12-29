@@ -1,30 +1,45 @@
 package com.example.whhsfbla.fashionnow;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.parse.Parse;
-import com.parse.ParseObject;
-
 public class MainActivity extends Activity {
+
+    SharedPreferences settings;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // [Optional] Power your app with Local Datastore. For more info, go to
-        // https://parse.com/docs/android/guide#local-datastore
-        Parse.enableLocalDatastore(this);
+        /*Parse.enableLocalDatastore(this);
 
         Parse.initialize(this);
 
         ParseObject testObject = new ParseObject("TestObject");
-        testObject.put("foo", "bar");
-        testObject.saveInBackground();
+        testObject.put("String", "Object");
+        testObject.saveInBackground(); */
 
+        final String PREFS_NAME = "MyPrefsFile";
+
+        settings = getSharedPreferences(PREFS_NAME, 0);
+
+        if (settings.getBoolean("my_first_time", true)) {
+            //the app is being launched for first time, do something
+            Log.d("Comments", "First time");
+
+            // first time task
+            intent = new Intent(this.getApplicationContext(), WelcomeActivity.class);
+            this.getApplicationContext().startActivity(intent);
+            // record the fact that the app has been started at least once
+            settings.edit().putBoolean("my_first_time", false).commit();
+        }
 
     }
 
