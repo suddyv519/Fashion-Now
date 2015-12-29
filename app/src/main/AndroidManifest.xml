@@ -22,10 +22,10 @@
 
         <meta-data
             android:name="com.parse.APPLICATION_ID"
-            android:value="sOi1mB4oCfxPlXh5lS5HbMXwc9J7A93ru60CzIN9" />
+            android:value="knaaEIaeENXtURCZ7t43dh7zEOfpFUgQ7pLE0uqy" />
         <meta-data
             android:name="com.parse.CLIENT_KEY"
-            android:value="9tUugcgmKl6amlM4Rq77x8GQDd9dWecoWqRzvZFK" />
+            android:value="vzBNnoKg3Ls3b4dfd6kV1SDYOeB9WfqMwvVO3hHF" />
 
     </application>
 
