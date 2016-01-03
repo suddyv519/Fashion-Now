@@ -23,13 +23,7 @@ public class MainActivity extends Activity {
 
         Parse.enableLocalDatastore(this);
         Parse.initialize(this);
-        /*Parse.enableLocalDatastore(this);
 
-        Parse.initialize(this);
-
-        ParseObject testObject = new ParseObject("TestObject");
-        testObject.put("String", "Object");
-        testObject.saveInBackground(); */
 
         context = this.getApplicationContext();
         intent = new Intent(context, WelcomeActivity.class);

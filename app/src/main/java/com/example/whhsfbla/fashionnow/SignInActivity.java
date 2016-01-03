@@ -8,56 +8,48 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
-import com.parse.SignUpCallback;
 
-public class SignUpActivity extends Activity {
+public class SignInActivity extends Activity {
 
     EditText username, password;
-    Button signUpButton;
-    ParseUser user;
+    Button signInButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_sign_in);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
 
-        signUpButton = (Button) findViewById(R.id.signUpButton);
+        signInButton = (Button) findViewById(R.id.signInButton);
 
-        user = new ParseUser();
-
-        signUpButton.setOnClickListener(new View.OnClickListener() {
+        signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                user.setUsername(username.getText().toString());
-                user.setPassword(password.getText().toString());
-                user.signUpInBackground(new SignUpCallback() {
+                ParseUser.logInInBackground(username.getText().toString(), password.getText().toString(), new LogInCallback() {
                     @Override
-                    public void done(ParseException e) {
+                    public void done(ParseUser user, ParseException e) {
                         if (e == null) {
                             // Show a simple Toast message upon successful registration
                             Toast.makeText(getApplicationContext(),
-                                    "Successfully Signed up, please log in.",
+                                    "Successfully Signed In",
                                     Toast.LENGTH_LONG).show();
                             finish();
                         } else {
                             Toast.makeText(getApplicationContext(),
-                                    "Sign up Error", Toast.LENGTH_LONG)
+                                    "Sign in Error", Toast.LENGTH_LONG)
                                     .show();
                             Log.e("ParseException", e.toString());
                         }
                     }
                 });
-
             }
         });
-
-
-
 
     }
 

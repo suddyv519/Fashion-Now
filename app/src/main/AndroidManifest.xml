@@ -33,14 +33,28 @@
             android:value="vzBNnoKg3Ls3b4dfd6kV1SDYOeB9WfqMwvVO3hHF" />
 
         <activity
-            android:name=".Welcome"
-            android:label="@string/title_activity_welcome" />
-        <activity
             android:name=".WelcomeActivity"
             android:label="@string/title_activity_welcome" />
         <activity
             android:name=".SignUpActivity"
             android:label="@string/title_activity_sign_up"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.whhsfbla.fashionnow.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SignInActivity"
+            android:label="@string/title_activity_sign_in"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.whhsfbla.fashionnow.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".Feed"
+            android:label="@string/title_activity_feed"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
