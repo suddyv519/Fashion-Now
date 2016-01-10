@@ -61,8 +61,8 @@ public class WelcomeActivity extends Activity {
             @Override
             public void onClick(View view) {
                 ParseAnonymousUtils.logInInBackground();
-                Intent intent = new Intent(view.getContext(), Feed.class);
-                view.getContext().startActivity(intent);
+                // intent = new Intent(view.getContext(), Feed.class);
+                //view.getContext().startActivity(intent);
             }
         });
 

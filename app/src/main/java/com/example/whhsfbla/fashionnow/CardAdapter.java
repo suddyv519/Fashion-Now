@@ -67,6 +67,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         Post p = postList.get(position);
 
         holder.vUsername.setText(postList.get(position).username);
+        holder.vTitle.setText(postList.get(position).title);
 
         Picasso.with(holder.context).load(p.picURL).into(holder.vPicture, new Callback() {
             @Override
