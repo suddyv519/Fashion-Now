@@ -26,4 +26,5 @@ dependencies {
     compile 'com.parse:parse-android:1.+'
     compile 'com.android.support:cardview-v7:23.0.+'
     compile 'com.android.support:recyclerview-v7:23.0.+'
+    compile 'com.squareup.picasso:picasso:2.4.0'
 }

@@ -26,18 +26,21 @@ public class MainActivity extends Activity {
         Parse.initialize(this);
 
         context = this.getApplicationContext();
-        prefs = getSharedPreferences(prefName, MODE_PRIVATE);
+        /*prefs = getSharedPreferences(prefName, MODE_PRIVATE);
         if (prefs.getString("FirstTime", "true").equals(true)){
             intent = new Intent(context, WelcomeActivity.class);
             startActivity(intent);
         }else{
         //start another Activity
-        }
+            intent = new Intent(context, Feed.class);
+            startActivity(intent);
+        }*/
 
         //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         //context.startActivity(intent);
         //finish();
-
+        intent = new Intent(context, Feed.class);
+        startActivity(intent);
 
 
     }
