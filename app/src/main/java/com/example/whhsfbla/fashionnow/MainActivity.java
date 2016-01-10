@@ -47,21 +47,6 @@ public class MainActivity extends Activity implements SwipeRefreshLayout.OnRefre
         cardList.setLayoutManager(lin);
 
         initCards();
-
-        context = this.getApplicationContext();
-        prefs = getSharedPreferences("com.example.whhsfbla.fashionnow", MODE_PRIVATE);
-        if (prefs.getBoolean("firstrun", true)) {
-            // Do first run stuff here then set 'firstrun' as false
-            // using the following line to edit/commit prefs
-            intent = new Intent(context, WelcomeActivity.class);
-            startActivity(intent);
-            prefs.edit().putBoolean("firstrun", false).commit();
-        }
-
-        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        //context.startActivity(intent);
-
-
     }
 
     private void initCards() {
