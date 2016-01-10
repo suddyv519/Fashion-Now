@@ -35,6 +35,8 @@ public class SignInActivity extends Activity {
                     @Override
                     public void done(ParseUser user, ParseException e) {
                         if (e == null) {
+                            User.username = username.getText().toString();
+                            User.isSignedIn = true;
                             // Show a simple Toast message upon successful registration
                             Toast.makeText(getApplicationContext(),
                                     "Successfully Signed In",
@@ -42,7 +44,7 @@ public class SignInActivity extends Activity {
                             finish();
                         } else {
                             Toast.makeText(getApplicationContext(),
-                                    "Sign in Error", Toast.LENGTH_LONG)
+                                    "Error. Username/Password may be incorrect", Toast.LENGTH_LONG)
                                     .show();
                             Log.e("ParseException", e.toString());
                         }

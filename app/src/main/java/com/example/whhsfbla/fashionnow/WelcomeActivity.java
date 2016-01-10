@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.parse.ParseAnonymousUtils;
-
 public class WelcomeActivity extends Activity {
 
     //TextView and Button declarations
@@ -60,9 +58,9 @@ public class WelcomeActivity extends Activity {
         anonButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ParseAnonymousUtils.logInInBackground();
-                // intent = new Intent(view.getContext(), Feed.class);
-                //view.getContext().startActivity(intent);
+                Intent intent = new Intent(view.getContext(), MainActivity.class);
+                view.getContext().startActivity(intent);
+                finish();
             }
         });
 

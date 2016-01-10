@@ -10,26 +10,25 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.parse.FindCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements SwipeRefreshLayout.OnRefreshListener {
 
-    public static String prefName = "Random";
     SharedPreferences prefs;
     Intent intent;
     Context context;
     SwipeRefreshLayout swipeRefreshLayout;
     LinearLayoutManager lin;
     RecyclerView cardList;
-    RecyclerView.Adapter cardAdapter;
     int size;
 
     @Override
@@ -37,11 +36,11 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Parse.enableLocalDatastore(this);
-        Parse.initialize(this);
+        //swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+        //swipeRefreshLayout.setOnRefreshListener(this);
 
         cardList = (RecyclerView) findViewById(R.id.cardList);
-        cardList.setHasFixedSize(true);
+        cardList.setHasFixedSize(false);
 
         lin = new LinearLayoutManager(getApplicationContext());
         lin.setOrientation(LinearLayoutManager.VERTICAL);
@@ -50,26 +49,23 @@ public class MainActivity extends Activity {
         initCards();
 
         context = this.getApplicationContext();
-        /*prefs = getSharedPreferences(prefName, MODE_PRIVATE);
-        if (prefs.getString("FirstTime", "true").equals(true)){
+        prefs = getSharedPreferences("com.example.whhsfbla.fashionnow", MODE_PRIVATE);
+        if (prefs.getBoolean("firstrun", true)) {
+            // Do first run stuff here then set 'firstrun' as false
+            // using the following line to edit/commit prefs
             intent = new Intent(context, WelcomeActivity.class);
             startActivity(intent);
-        }else{
-        //start another Activity
-            intent = new Intent(context, Feed.class);
-            startActivity(intent);
-        }*/
+            prefs.edit().putBoolean("firstrun", false).commit();
+        }
 
         //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         //context.startActivity(intent);
-        //finish();
-
 
 
     }
 
     private void initCards() {
-        cardAdapter = new CardAdapter(getPosts());
+        RecyclerView.Adapter cardAdapter = new CardAdapter(getPosts());
         cardList.setAdapter(cardAdapter);
         //swipeRefreshLayout.setRefreshing(false);
     }
@@ -104,6 +100,7 @@ public class MainActivity extends Activity {
 
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -117,12 +114,38 @@ public class MainActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        Intent launchNewIntent;
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_sign_inout:
+                //if you are signed in it will sign you out, otherwise it will allow you to sign in with your credentials
+                if(User.isSignedIn) {
+                    User.username = null;
+                    User.isSignedIn = false;
+                    ParseUser.logOutInBackground();
+                    Toast.makeText(getApplicationContext(),
+                            "Successfully signed out",
+                            Toast.LENGTH_LONG).show();
+                }
+                else {
+                    launchNewIntent = new Intent(MainActivity.this, SignInActivity.class);
+                    startActivityForResult(launchNewIntent, 0);
+                }
+                return true;
+
+            case R.id.action_sign_up:
+                launchNewIntent = new Intent(MainActivity.this, SignUpActivity.class);
+                startActivityForResult(launchNewIntent, 0);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
+    }
 
-        return super.onOptionsItemSelected(item);
+    @Override
+    public void onRefresh() {
+        initCards();
     }
 }

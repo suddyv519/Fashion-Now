@@ -46,7 +46,7 @@ public class SignUpActivity extends Activity {
                             finish();
                         } else {
                             Toast.makeText(getApplicationContext(),
-                                    "Sign up Error", Toast.LENGTH_LONG)
+                                    "Error. Try a different username.", Toast.LENGTH_LONG)
                                     .show();
                             Log.e("ParseException", e.toString());
                         }
