@@ -10,8 +10,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
+import com.melnykov.fab.FloatingActionButton;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -30,6 +32,7 @@ public class MainActivity extends Activity implements SwipeRefreshLayout.OnRefre
     LinearLayoutManager lin;
     RecyclerView cardList;
     int size;
+    FloatingActionButton button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,18 @@ public class MainActivity extends Activity implements SwipeRefreshLayout.OnRefre
 
         //swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
         //swipeRefreshLayout.setOnRefreshListener(this);
+
+        button = (FloatingActionButton) findViewById(R.id.fab);
+        button.setColorNormalResId(R.color.black);
+        button.setColorPressedResId(R.color.white_pressed);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
 
         cardList = (RecyclerView) findViewById(R.id.cardList);
         cardList.setHasFixedSize(false);
@@ -98,7 +113,6 @@ public class MainActivity extends Activity implements SwipeRefreshLayout.OnRefre
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
         Intent launchNewIntent;
 
         // Handle item selection
