@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -43,10 +44,29 @@ public class SignUpActivity extends Activity {
                             Toast.makeText(getApplicationContext(),
                                     "Successfully Signed up, please log in.",
                                     Toast.LENGTH_LONG).show();
+
                             finish();
                         } else {
                             Toast.makeText(getApplicationContext(),
                                     "Error. Try a different username.", Toast.LENGTH_LONG)
+                                    .show();
+                            Log.e("ParseException", e.toString());
+                        }
+                    }
+                });
+                //open Login Page after signing up
+                user.logInInBackground(username.getText().toString(), password.getText().toString(), new LogInCallback() {
+                    @Override
+                    public void done(ParseUser user, ParseException e) {
+                        if (e == null) {
+                            // Show a simple Toast message upon successful registration
+                            Toast.makeText(getApplicationContext(),
+                                    "Successfully Signed In",
+                                    Toast.LENGTH_LONG).show();
+                            finish();
+                        } else {
+                            Toast.makeText(getApplicationContext(),
+                                    "Sign in Error", Toast.LENGTH_LONG)
                                     .show();
                             Log.e("ParseException", e.toString());
                         }

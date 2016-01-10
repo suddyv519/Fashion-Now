@@ -34,7 +34,7 @@ public class WelcomeActivity extends Activity {
         signUpText.setText("Don't have an account?");
         signUpButton.setText("Sign Up");
 
-        anonText = (TextView) findViewById(R.id.anonText);
+        anonText = (TextView) findViewById(R.id.nameText);
         anonButton = (Button) findViewById(R.id.anonButton);
         anonText.setText("Don't want to make an account? No problem.");
         anonButton.setText("Continue without an account");

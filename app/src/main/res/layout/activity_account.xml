@@ -7,22 +7,14 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.whhsfbla.fashionnow.WelcomeActivity">
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/signInButton"
-        android:layout_below="@+id/signInText"
-        android:layout_alignParentStart="true" />
+    tools:context="com.example.whhsfbla.fashionnow.AccountActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/signInText"
+        android:text="nameText"
+        android:id="@+id/nameText"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
@@ -30,33 +22,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/signUpText"
-        android:layout_above="@+id/signUpButton"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/signUpButton"
-        android:layout_above="@+id/nameText"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="45dp" />
+        android:text="signInText"
+        android:id="@+id/textView"
+        android:layout_below="@+id/nameText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="64dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/nameText"
+        android:text="signUpText"
+        android:id="@+id/signUpText"
         android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/anonButton"
-        android:layout_below="@+id/nameText" />
+        android:text="sign In Button"
+        android:id="@+id/signInButton"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="sign Up Button"
+        android:id="@+id/button"
+        android:layout_below="@+id/signUpText"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

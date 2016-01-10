@@ -7,4 +7,7 @@
     <item android:id="@+id/action_sign_up" android:title="Sign Up"
         android:orderInCategory="100" android:showAsAction="never" />
 
+    <item android:id="@+id/action_account_activity" android:title="Account Activity"
+        android:orderInCategory="100" android:showAsAction="never" />
+
 </menu>

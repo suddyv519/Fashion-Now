@@ -52,7 +52,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.whhsfbla.fashionnow.MainActivity" />
         </activity>
-
+        <activity
+            android:name=".AccountActivity"
+            android:label="@string/title_activity_account"></activity>
     </application>
 
 </manifest>

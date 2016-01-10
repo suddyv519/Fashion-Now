@@ -9,54 +9,48 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.whhsfbla.fashionnow.WelcomeActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/signInButton"
-        android:layout_below="@+id/signInText"
-        android:layout_alignParentStart="true" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/signInText"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/signUpText"
-        android:layout_above="@+id/signUpButton"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/signUpButton"
-        android:layout_above="@+id/nameText"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="45dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
+        android:text="nameText"
         android:id="@+id/nameText"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentTop="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/anonButton"
-        android:layout_below="@+id/nameText" />
+        android:text="Sign In Now"
+        android:id="@+id/signInButton"
+        android:layout_marginTop="127dp"
+        android:layout_below="@+id/nameText"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="signInText"
+        android:id="@+id/signInText"
+        android:layout_alignBottom="@+id/signInButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="63dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="signUpText"
+        android:id="@+id/signUpText"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up Now"
+        android:id="@+id/signUpButton"
+        android:layout_below="@+id/signUpText"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

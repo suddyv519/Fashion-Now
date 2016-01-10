@@ -123,7 +123,10 @@ public class MainActivity extends Activity implements SwipeRefreshLayout.OnRefre
                 launchNewIntent = new Intent(MainActivity.this, SignUpActivity.class);
                 startActivityForResult(launchNewIntent, 0);
                 return true;
-
+            case R.id.action_account_activity:
+                launchNewIntent = new Intent(MainActivity.this, AccountActivity.class);
+                startActivityForResult(launchNewIntent, 0);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
