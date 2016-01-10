@@ -5,10 +5,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.parse.FindCallback;
 import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends Activity {
 
@@ -16,6 +26,11 @@ public class MainActivity extends Activity {
     SharedPreferences prefs;
     Intent intent;
     Context context;
+    SwipeRefreshLayout swipeRefreshLayout;
+    LinearLayoutManager lin;
+    RecyclerView cardList;
+    RecyclerView.Adapter cardAdapter;
+    int size;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +39,15 @@ public class MainActivity extends Activity {
 
         Parse.enableLocalDatastore(this);
         Parse.initialize(this);
+
+        cardList = (RecyclerView) findViewById(R.id.cardList);
+        cardList.setHasFixedSize(true);
+
+        lin = new LinearLayoutManager(getApplicationContext());
+        lin.setOrientation(LinearLayoutManager.VERTICAL);
+        cardList.setLayoutManager(lin);
+
+        initCards();
 
         context = this.getApplicationContext();
         /*prefs = getSharedPreferences(prefName, MODE_PRIVATE);
@@ -39,9 +63,44 @@ public class MainActivity extends Activity {
         //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         //context.startActivity(intent);
         //finish();
-        intent = new Intent(context, Feed.class);
-        startActivity(intent);
 
+
+
+    }
+
+    private void initCards() {
+        cardAdapter = new CardAdapter(getPosts());
+        cardList.setAdapter(cardAdapter);
+        //swipeRefreshLayout.setRefreshing(false);
+    }
+
+    private List<Post> getPosts() {
+        ParseQuery query = ParseQuery.getQuery("Post");
+        final List<Post> result = new ArrayList<>();
+
+        try {
+            size = query.count();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null) {
+                    for (int i = 0; i < size; i++) {
+                        Post p = new Post();
+                        p.username = objects.get(i).getString("user");
+                        p.picURL = objects.get(i).getString("picURL");
+                        p.title = objects.get(i).getString("title");
+                        result.add(p);
+                    }
+                } else {
+                    e.printStackTrace();
+                }
+            }
+        });
+        return result;
 
     }
 

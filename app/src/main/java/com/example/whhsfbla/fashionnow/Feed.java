@@ -19,7 +19,7 @@ public class Feed extends Activity {
     SwipeRefreshLayout swipeRefreshLayout;
     LinearLayoutManager lin;
     RecyclerView cardList;
-    RecyclerView.Adapter mAdapter;
+    RecyclerView.Adapter cardAdapter;
     RecyclerView.LayoutManager mLayoutManager;
     int size;
 
@@ -39,13 +39,13 @@ public class Feed extends Activity {
         lin.setOrientation(LinearLayoutManager.VERTICAL);
         cardList.setLayoutManager(lin);
 
-        mAdapter = new CardAdapter(getPosts());
-        cardList.setAdapter(mAdapter);
+        initCards();
+
     }
 
     private void initCards() {
-        CardAdapter ca = new CardAdapter(getPosts());
-        cardList.setAdapter(ca);
+        cardAdapter = new CardAdapter(getPosts());
+        cardList.setAdapter(cardAdapter);
         swipeRefreshLayout.setRefreshing(false);
     }
 
@@ -68,6 +68,7 @@ public class Feed extends Activity {
                         Post p = new Post();
                         p.username = objects.get(i).getString("user");
                         p.picURL = objects.get(i).getString("picURL");
+                        p.title = objects.get(i).getString("title");
                         result.add(p);
                     }
                 } else {

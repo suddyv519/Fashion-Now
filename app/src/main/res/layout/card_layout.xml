@@ -67,7 +67,7 @@
         </FrameLayout>
 
         <TextView
-            android:id="@+id/txtDate"
+            android:id="@+id/txtUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"

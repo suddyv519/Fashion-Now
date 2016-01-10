@@ -35,7 +35,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
             vUsername = (TextView) v.findViewById(R.id.txtUsername);
             vProgressBar = (ProgressBar) v.findViewById(R.id.imgLoad);
             vPicture = (ImageView) v.findViewById(R.id.picture);
-            vTitle = (TextView) v.findViewById(R.id.)
+            vTitle = (TextView) v.findViewById(R.id.txtTitle);
             context = v.getContext();
         }
     }
