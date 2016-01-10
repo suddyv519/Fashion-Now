@@ -18,7 +18,7 @@ public class Feed extends Activity {
         setContentView(R.layout.activity_feed);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        RecyclerView drawerRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        //RecyclerView drawerRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         drawerRecyclerView.setHasFixedSize(true);
 
     }

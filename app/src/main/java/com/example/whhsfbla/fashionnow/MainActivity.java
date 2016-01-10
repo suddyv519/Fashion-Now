@@ -12,7 +12,8 @@ import com.parse.Parse;
 
 public class MainActivity extends Activity {
 
-    SharedPreferences settings;
+    public static String prefName = "Random";
+    SharedPreferences prefs;
     Intent intent;
     Context context;
 
@@ -24,27 +25,20 @@ public class MainActivity extends Activity {
         Parse.enableLocalDatastore(this);
         Parse.initialize(this);
 
-
         context = this.getApplicationContext();
-        intent = new Intent(context, WelcomeActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
-        finish();
+        prefs = getSharedPreferences(prefName, MODE_PRIVATE);
+        if (prefs.getString("FirstTime", "true").equals(true)){
+            intent = new Intent(context, WelcomeActivity.class);
+            startActivity(intent);
+        }else{
+        //start another Activity
+        }
 
-        /*final String PREFS_NAME = "MyPrefsFile";
+        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //context.startActivity(intent);
+        //finish();
 
-        settings = getSharedPreferences(PREFS_NAME, 0);
 
-        if(settings.getBoolean("my_first_time", true)) {
-            //the app is being launched for first time, do something
-            Log.d("Comments", "First time");
-
-            // first time task
-            intent = new Intent(this.getApplicationContext(), WelcomeActivity.class);
-            this.getApplicationContext().startActivity(intent);
-            // record the fact that the app has been started at least once
-            settings.edit().putBoolean("my_first_time", false).commit();
-        } */
 
     }
 
