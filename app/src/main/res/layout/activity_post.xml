@@ -19,56 +19,63 @@
             android:layout_height="match_parent"
             android:layout_gravity="left|top">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Large Text"
-                android:id="@+id/txtPostTitle"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true"
-                android:layout_gravity="left|top" />
-
-            <EditText
-                android:layout_width="244dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/editText"
-                android:layout_below="@+id/txtPostTitle"
-                android:layout_alignParentStart="true"
-                android:layout_gravity="left|top" />
-
             <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="match_parent"
+                android:layout_width="338dp"
                 android:layout_height="match_parent"
                 android:weightSum="1">
 
                 <Button
-                    android:layout_width="wrap_content"
+                    android:layout_width="111dp"
                     android:layout_height="wrap_content"
-                    android:text="New Button"
-                    android:id="@+id/btnChoosePic"
-                    android:layout_below="@+id/editText"
-                    android:layout_alignParentStart="true" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/imgPreview"
-                    android:layout_gravity="center_vertical" />
+                    android:text="Post"
+                    android:id="@+id/btnMakePost"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"
+                    android:background="#3F51B5"
+                    android:textColor="#ffffff"
+                    android:layout_gravity="bottom" />
 
             </LinearLayout>
         </LinearLayout>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Button"
-            android:id="@+id/btnMakePost"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"
-            android:layout_gravity="bottom" />
-
     </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Choose a Caption..."
+        android:id="@+id/txtPostTitle"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="left|top" />
+
+    <EditText
+        android:layout_width="244dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_below="@+id/txtPostTitle"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="left|top"
+        android:layout_alignEnd="@+id/txtPostTitle" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload Image"
+        android:id="@+id/btnChoosePic"
+        android:layout_below="@+id/editText"
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/white"
+        android:background="#3F51B5"
+        android:layout_alignEnd="@+id/txtPostTitle" />
+
+    <ImageView
+        android:layout_width="340dp"
+        android:layout_height="243dp"
+        android:id="@+id/imgPreview"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
