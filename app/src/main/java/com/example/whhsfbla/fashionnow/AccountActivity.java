@@ -18,9 +18,6 @@ public class AccountActivity extends Activity {
     Button signUpButton;
     Button signOutButton;
 
-    String nameString = "Hello, " + User.username ;
-    String signInString = "You aren't logged in right now!";
-    String signUpString = "Don't have an account?";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +32,6 @@ public class AccountActivity extends Activity {
         signUpButton = (Button) findViewById(R.id.signUpButton);
         signOutButton = (Button) findViewById(R.id.signOutButton);
 
-
-        nameText.setText(nameString);
-        signInText.setText(signInString);
-        signUpText.setText(signUpString);
-
         nameText.setVisibility(View.GONE);
         signInText.setVisibility(View.GONE);
         signUpText.setVisibility(View.GONE);
@@ -49,6 +41,7 @@ public class AccountActivity extends Activity {
 
         //Viewer Logic
         if(User.isSignedIn){
+            nameText.setText(User.username);
             nameText.setVisibility(View.VISIBLE);
             signOutButton.setVisibility(View.VISIBLE);
         }
