@@ -60,4 +60,5 @@
         android:id="@+id/signOutButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

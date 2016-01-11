@@ -42,24 +42,6 @@ public class AccountActivity extends Activity {
         signUpButton.setVisibility(View.GONE);
         signOutButton.setVisibility(View.GONE);
 
-        //Viewer Logic
-        if(User.isSignedIn){
-            nameText.setText("Hello, " + User.username);
-            signOutButton.setText("Sign Out");
-            nameText.setVisibility(View.VISIBLE);
-            signOutButton.setVisibility(View.VISIBLE);
-        }
-        else {
-            signInText.setText("You aren't signed in. Sign In now");
-            signUpText.setText("Don't have an account? Sign Up now");
-            signInButton.setText("Sign In");
-            signUpButton.setText("Sign Up");
-            signInText.setVisibility(View.VISIBLE);
-            signUpText.setVisibility(View.VISIBLE);
-            signInButton.setVisibility(View.VISIBLE);
-            signUpButton.setVisibility(View.VISIBLE);
-        }
-
         //TextView and Button instantiations and setting texts
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,6 +70,25 @@ public class AccountActivity extends Activity {
             }
         });
 
+
+    }
+    private void ViewerLogic(){
+        if(User.isSignedIn){
+            nameText.setText("Hello, " + User.username);
+            signOutButton.setText("Sign Out");
+            nameText.setVisibility(View.VISIBLE);
+            signOutButton.setVisibility(View.VISIBLE);
+        }
+        else {
+            signInText.setText("You aren't signed in. \nSign In now");
+            signUpText.setText("Don't have an account? \nSign Up now");
+            signInButton.setText("Sign In");
+            signUpButton.setText("Sign Up");
+            signInText.setVisibility(View.VISIBLE);
+            signUpText.setVisibility(View.VISIBLE);
+            signInButton.setVisibility(View.VISIBLE);
+            signUpButton.setVisibility(View.VISIBLE);
+        }
     }
 
 }
