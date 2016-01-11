@@ -7,22 +7,20 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Parcelable;
-import android.preference.PreferenceActivity;
 import android.provider.MediaStore;
-import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.parse.ParseFile;
+import com.parse.ParseObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -66,7 +64,18 @@ public class PostActivity extends Activity {
         btnChoosePic.setText("Choose Picture");
         btnUploadPost.setText("Create Post");
 
-        btnUploadPost.setOnClickListener(new View.OnClickListener() {
+        /*btnChoosePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    openImageIntent();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }); */
+
+        btnChoosePic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -77,6 +86,12 @@ public class PostActivity extends Activity {
             }
         });
 
+        btnUploadPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadPost();
+            }
+        });
 
     }
 
@@ -115,32 +130,78 @@ public class PostActivity extends Activity {
         startActivityForResult(chooserIntent, SELECT_PHOTO);
     }
 
-    private void uploadImage() {
-        //The drawable from the ImageView is converted to a bitmap, and then to a byte array, and then encoded,
-        //and sent as a request parameter to the Imgur website.
-        Bitmap bitmap = ((BitmapDrawable) imagePreview.getDrawable()).getBitmap();
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-        byte[] b = byteArrayOutputStream.toByteArray();
-        String base64Image = Base64.encodeToString(b, Base64.DEFAULT);
-        //AsyncHttpClient client = new AsyncHttpClient();
-       //client.addHeader("Authorization", "Client-ID " + IMGUR_CLIENT_ID);
+    private void uploadPost() {
+        // Locate the image in res > drawable-hdpi
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.id.imgPreview);
+        // Convert it to byte
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        // Compress image to lower quality scale 1 - 100
+        //bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] image = stream.toByteArray();
 
-        //RequestParams requestParams = new RequestParams();
-        //requestParams.add("image", base64Image);
+        // Create the ParseFile
+        ParseFile file = new ParseFile("tmpfile.png", image);
+        // Upload the image into Parse Cloud
+        file.saveInBackground();
 
-        /*client.post("https://api.imgur.com/3/image", requestParams, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, PreferenceActivity.Header[] headers, JSONObject response) {
+        // Create a New Class called "ImageUpload" in Parse
+        ParseObject post = new ParseObject("Post");
+
+        // Create a column named "ImageName" and set the string
+        post.put("title", editText.getText().toString());
+
+        // Create a column named "ImageFile" and insert the image
+        post.put("ImageFile", file);
+
+        // Create the class and the columns
+        post.saveInBackground();
+
+        // Show a simple toast message
+        Toast.makeText(PostActivity.this, "Post Uploaded",
+                Toast.LENGTH_SHORT).show();
+
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent imageIntent) {
+        super.onActivityResult(requestCode, resultCode, imageIntent);
+
+        if (resultCode == RESULT_OK) {
+            if (requestCode == SELECT_PHOTO) {
+                //Get the URI
+                final boolean isCamera;
+                if (imageIntent == null) {
+                    isCamera = true;
+                } else {
+                    final String action = imageIntent.getAction();
+                    if (action == null) {
+                        isCamera = false;
+                    } else {
+                        isCamera = action.equals(MediaStore.ACTION_IMAGE_CAPTURE);
+                    }
+                }
+
+                Uri selectedImageUri;
+                if (isCamera) {
+                    selectedImageUri = uploadFileUri;
+                } else {
+                    selectedImageUri = imageIntent == null ? null : imageIntent.getData();
+                }
+
+                //Get the Bitmap from the URI, and set it to the ImageView
                 try {
-                    //Get the Imgur URL for the image
-                    imageURL = response.getJSONObject("data").getString("link");
-                    showDialog();
-                } catch (JSONException e) {
+                    imageStream = getContentResolver().openInputStream(selectedImageUri);
+                    final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                    imgPreview.setImageBitmap(selectedImage);
+                    btnUploadPost.setEnabled(true);
+                } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
             }
-            */
         }
     }
 
+
+
+}
