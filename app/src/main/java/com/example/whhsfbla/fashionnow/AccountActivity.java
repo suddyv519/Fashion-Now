@@ -50,7 +50,7 @@ public class AccountActivity extends Activity {
             signInText.setText("You aren't signed in. Sign In now");
             signUpText.setText("Don't have an account? Sign Up now");
             signInButton.setText("Sign In");
-            signInButton.setText("Sign Up");
+            signUpButton.setText("Sign Up");
             signInText.setVisibility(View.VISIBLE);
             signUpText.setVisibility(View.VISIBLE);
             signInButton.setVisibility(View.VISIBLE);
