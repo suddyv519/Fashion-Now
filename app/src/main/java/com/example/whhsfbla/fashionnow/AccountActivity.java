@@ -80,8 +80,8 @@ public class AccountActivity extends Activity {
             signOutButton.setVisibility(View.VISIBLE);
         }
         else {
-            signInText.setText("You aren't signed in.\nSign In now");
-            signUpText.setText("Don't have an account?\nSign Up now");
+            signInText.setText("You aren't signed in. Sign In now");
+            signUpText.setText("Don't have an account? Sign Up now");
             signInButton.setText("Sign In");
             signUpButton.setText("Sign Up");
             signInText.setVisibility(View.VISIBLE);
