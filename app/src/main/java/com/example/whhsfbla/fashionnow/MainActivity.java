@@ -49,7 +49,8 @@ public class MainActivity extends Activity implements SwipeRefreshLayout.OnRefre
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                intent = new Intent(v.getContext(), PostActivity.class);
+                v.getContext().startActivity(intent);
             }
         });
 

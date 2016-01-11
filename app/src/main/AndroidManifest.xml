@@ -54,7 +54,10 @@
         </activity>
         <activity
             android:name=".AccountActivity"
-            android:label="@string/title_activity_account"></activity>
+            android:label="@string/title_activity_account" />
+        <activity
+            android:name=".PostActivity"
+            android:label="@string/title_activity_post"></activity>
     </application>
 
 </manifest>
