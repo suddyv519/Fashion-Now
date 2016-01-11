@@ -40,7 +40,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="sign In Button"
+        android:text="Sign In"
         android:id="@+id/signInButton"
         android:layout_below="@+id/signInText"
         android:layout_centerHorizontal="true" />
@@ -48,8 +48,16 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="sign Up Button"
+        android:text="Sign Up"
         android:id="@+id/signUpButton"
         android:layout_below="@+id/signUpText"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Out"
+        android:id="@+id/signOutButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

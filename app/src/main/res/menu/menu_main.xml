@@ -1,12 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
-
-    <item android:id="@+id/action_sign_inout" android:title="Sign In/Out"
-        android:orderInCategory="100" android:showAsAction="never" />
-
-    <item android:id="@+id/action_sign_up" android:title="Sign Up"
-        android:orderInCategory="100" android:showAsAction="never" />
-
+//
     <item android:id="@+id/action_account_activity" android:title="Account Activity"
         android:orderInCategory="100" android:showAsAction="never" />
 

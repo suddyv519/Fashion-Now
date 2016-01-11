@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.action_sign_inout:
+            /*case R.id.action_sign_inout:
                 //if you are signed in it will sign you out, otherwise it will allow you to sign in with your credentials
                 if(User.isSignedIn) {
                     User.username = null;
@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             case R.id.action_sign_up:
                 launchNewIntent = new Intent(MainActivity.this, SignUpActivity.class);
                 startActivityForResult(launchNewIntent, 0);
-                return true;
+                return true;*/
             case R.id.action_account_activity:
                 launchNewIntent = new Intent(MainActivity.this, AccountActivity.class);
                 startActivityForResult(launchNewIntent, 0);

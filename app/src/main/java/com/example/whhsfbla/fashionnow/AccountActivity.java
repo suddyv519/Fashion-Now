@@ -16,10 +16,8 @@ public class AccountActivity extends Activity {
 
     Button signInButton;
     Button signUpButton;
+    Button signOutButton;
 
-    String nameString = "Hello, " + User.username ;
-    String signInString = "You aren't logged in right now!";
-    String signUpString = "Don't have an account?";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,26 +30,30 @@ public class AccountActivity extends Activity {
         signUpText = (TextView) findViewById(R.id.signUpText);
         signInButton = (Button) findViewById(R.id.signInButton);
         signUpButton = (Button) findViewById(R.id.signUpButton);
-
-
-        nameText.setText(nameString);
-        signInText.setText(signInString);
-        signUpText.setText(signUpString);
+        signOutButton = (Button) findViewById(R.id.signOutButton);
 
         nameText.setVisibility(View.GONE);
         signInText.setVisibility(View.GONE);
         signUpText.setVisibility(View.GONE);
         signInButton.setVisibility(View.GONE);
         signUpButton.setVisibility(View.GONE);
+        signOutButton.setVisibility(View.GONE);
 
         //Viewer Logic
         if(User.isSignedIn){
+            nameText.setText("Hello, " + User.username);
+            signOutButton.setText("Sign Out");
             nameText.setVisibility(View.VISIBLE);
+            signOutButton.setVisibility(View.VISIBLE);
         }
         else {
+            signInText.setText("You aren't signed in. Sign In now");
+            signUpText.setText("Don't have an account? Sign Up now");
+            signInButton.setText("Sign In");
+            signInButton.setText("Sign Up");
             signInText.setVisibility(View.VISIBLE);
-            signInButton.setVisibility(View.VISIBLE);
             signUpText.setVisibility(View.VISIBLE);
+            signInButton.setVisibility(View.VISIBLE);
             signUpButton.setVisibility(View.VISIBLE);
         }
 
