@@ -47,6 +47,11 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         button.setColorNormalResId(R.color.black);
         button.setColorPressedResId(R.color.white_pressed);
 
+        if(User.isSignedIn)
+            button.setVisibility(View.VISIBLE);
+        else
+            button.setVisibility(View.INVISIBLE);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

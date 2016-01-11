@@ -21,7 +21,6 @@ public class SignInActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        //getActionBar().setDisplayHomeAsUpEnabled(true);
 
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
