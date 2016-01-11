@@ -41,11 +41,13 @@ public class AccountActivity extends Activity {
 
         //Viewer Logic
         if(User.isSignedIn){
-            nameText.setText(User.username);
+            nameText.setText("Hello, " + User.username);
             nameText.setVisibility(View.VISIBLE);
             signOutButton.setVisibility(View.VISIBLE);
         }
         else {
+            signInText.setText("You aren't signed in. Sign In now");
+            signUpText.setText("Don't have an account? Sign Up now");
             signInText.setVisibility(View.VISIBLE);
             signInButton.setVisibility(View.VISIBLE);
             signUpText.setVisibility(View.VISIBLE);
