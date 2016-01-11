@@ -1,12 +1,10 @@
 package com.example.whhsfbla.fashionnow;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,6 +16,7 @@ import android.widget.Toast;
 import com.melnykov.fab.FloatingActionButton;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -90,8 +89,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     for (int i = 0; i < size; i++) {
                         Post p = new Post();
                         p.username = objects.get(i).getString("user");
-                        p.picURL = objects.get(i).getString("picURL");
+                        //p.picURL = objects.get(i).getString("picURL");
                         p.title = objects.get(i).getString("title");
+                        p.img = (ParseFile) objects.get(i).get("ImageFile");
                         result.add(p);
                     }
                 } else {

@@ -1,6 +1,9 @@
 package com.example.whhsfbla.fashionnow;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +12,9 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
+import com.parse.ParseException;
 
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -64,12 +67,28 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         // - replace the contents of the view with that element
         //holder.mTextView.setText(mDataset[position]);
 
+        //TODO fix picture display
+        //TODO Add username to posts
+
         Post p = postList.get(position);
 
-        holder.vUsername.setText(postList.get(position).username);
-        holder.vTitle.setText(postList.get(position).title);
+        holder.vUsername.setText(p.username);
+        holder.vTitle.setText(p.title);
 
-        Picasso.with(holder.context).load(p.picURL).into(holder.vPicture, new Callback() {
+        String imageUrl = p.img.getUrl();
+        Uri imageUri = Uri.parse(imageUrl);
+
+        InputStream imageStream = null;
+        try {
+            imageStream = p.img.getDataStream();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+
+
+
+        /*Picasso.with(holder.context).load(imageUri.toString()).into(holder.vPicture, new Callback() {
             @Override
             public void onSuccess() {
                 holder.vProgressBar.setVisibility(View.INVISIBLE);
@@ -81,7 +100,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
                 holder.vProgressBar.setVisibility(View.VISIBLE);
                 holder.vProgressBar.setVisibility(View.INVISIBLE);
             }
-        });
+        });*/
+
+
 
     }
 

@@ -28,10 +28,10 @@
 
         <meta-data
             android:name="com.parse.APPLICATION_ID"
-            android:value="knaaEIaeENXtURCZ7t43dh7zEOfpFUgQ7pLE0uqy" />
+            android:value="@string/PARSE_APPLICATION_ID" />
         <meta-data
             android:name="com.parse.CLIENT_KEY"
-            android:value="vzBNnoKg3Ls3b4dfd6kV1SDYOeB9WfqMwvVO3hHF" />
+            android:value="@string/PARSE_CLIENT_KEY" />
 
         <activity
             android:name=".WelcomeActivity"
