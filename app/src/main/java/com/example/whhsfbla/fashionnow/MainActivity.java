@@ -5,11 +5,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,30 +33,26 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     LinearLayoutManager lin;
     RecyclerView cardList;
     int size;
-    FloatingActionButton button;
+    FloatingActionButton fabAddPost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
-        //swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(this);
 
-
-
-        // Get the ActionBar here to configure the way it behaves.
-
-        button = (FloatingActionButton) findViewById(R.id.fab);
-        button.setColorNormalResId(R.color.black);
-        button.setColorPressedResId(R.color.white_pressed);
+        fabAddPost = (FloatingActionButton) findViewById(R.id.fab);
+        fabAddPost.setColorNormalResId(R.color.black);
+        fabAddPost.setColorPressedResId(R.color.white_pressed);
 
         if(User.isSignedIn)
-            button.setVisibility(View.VISIBLE);
+            fabAddPost.setVisibility(View.VISIBLE);
         else
-            button.setVisibility(View.INVISIBLE);
+            fabAddPost.setVisibility(View.INVISIBLE);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        fabAddPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent = new Intent(v.getContext(), PostActivity.class);
@@ -80,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     private void initCards() {
         RecyclerView.Adapter cardAdapter = new CardAdapter(getPosts());
         cardList.setAdapter(cardAdapter);
-        //swipeRefreshLayout.setRefreshing(false);
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     private List<Post> getPosts() {
@@ -162,6 +156,16 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     @Override
     public void onRefresh() {
-        initCards();
+        finish();
+        startActivity(new Intent(this, MainActivity.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(User.isSignedIn)
+            fabAddPost.setVisibility(View.VISIBLE);
+        else
+            fabAddPost.setVisibility(View.INVISIBLE);
     }
 }

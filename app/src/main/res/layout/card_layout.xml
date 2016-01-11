@@ -48,13 +48,13 @@
             android:background="@android:color/darker_gray"
             android:padding="2dp">
 
-            <ImageView
+            <com.parse.ParseImageView
                 android:id="@+id/picture"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:scaleType="fitCenter"
-                android:visibility="invisible"  />
+                android:visibility="visible"/>
 
             <ProgressBar
                 android:id="@+id/imgLoad"
@@ -62,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:visibility="visible"    />
+                android:visibility="invisible"    />
 
         </FrameLayout>
 

@@ -38,7 +38,6 @@ public class PostActivity extends Activity {
     private ImageView imagePreview;
     private Button uploadButton;
     private InputStream imageStream;
-    private String[] eventNames;
     private HashMap events;
     private String imageURL;
     private Uri uploadFileUri;
@@ -63,6 +62,7 @@ public class PostActivity extends Activity {
         txtPostTitle.setText("Title:");
         btnChoosePic.setText("Choose Picture");
         btnUploadPost.setText("Create Post");
+        btnUploadPost.setEnabled(false);
 
         /*btnChoosePic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +90,7 @@ public class PostActivity extends Activity {
             @Override
             public void onClick(View v) {
                 uploadPost();
+                finish();
             }
         });
 
@@ -153,6 +154,8 @@ public class PostActivity extends Activity {
         // Create a column named "ImageFile" and insert the image
         post.put("ImageFile", file);
 
+        post.put("user", User.username);
+
         // Create the class and the columns
         post.saveInBackground();
 
@@ -179,6 +182,7 @@ public class PostActivity extends Activity {
                         isCamera = false;
                     } else {
                         isCamera = action.equals(MediaStore.ACTION_IMAGE_CAPTURE);
+
                     }
                 }
 

@@ -11,8 +11,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/frameLayout2">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:orientation="vertical"
@@ -21,14 +20,14 @@
             android:layout_gravity="left|top">
 
             <TextView
-                android:layout_width="206dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
                 android:id="@+id/txtPostTitle"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
-                android:layout_gravity="left|top"
-                android:text="Write a caption..." />
+                android:layout_gravity="left|top" />
 
             <EditText
                 android:layout_width="244dp"
@@ -47,41 +46,29 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Post"
-                    android:id="@+id/btnMakePost"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_gravity="bottom"
-                    android:background="#1a237e"
-                    android:textColor="#FFFFFF"
-                    android:layout_weight="0.07" />
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="39dp"
-                    android:text="Upload Image"
+                    android:text="New Button"
                     android:id="@+id/btnChoosePic"
                     android:layout_below="@+id/editText"
-                    android:layout_alignParentStart="true"
-                    android:textColor="#ffffff"
-                    android:background="#1a237e"
-                    android:layout_gravity="right"
-                    android:layout_weight="0.10" />
+                    android:layout_alignParentStart="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imgPreview"
+                    android:layout_gravity="center_vertical" />
 
             </LinearLayout>
         </LinearLayout>
 
-    </FrameLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/btnMakePost"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="bottom" />
 
-    <ImageView
-        android:layout_width="327dp"
-        android:layout_height="226dp"
-        android:id="@+id/imgPreview"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="100dp"
-        android:layout_alignBottom="@+id/frameLayout2"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="114dp" />
+    </FrameLayout>
 
 </RelativeLayout>

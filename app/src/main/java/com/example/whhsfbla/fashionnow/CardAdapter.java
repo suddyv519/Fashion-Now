@@ -12,7 +12,9 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
+import com.parse.ParseImageView;
 
 import java.io.InputStream;
 import java.util.List;
@@ -30,14 +32,14 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         // each data item is just a string in this case
         protected TextView vUsername, vTitle;
         protected ProgressBar vProgressBar;
-        protected ImageView vPicture;
+        protected ParseImageView vPicture;
         protected Context context;
 
         public ViewHolder(View v) {
             super(v);
             vUsername = (TextView) v.findViewById(R.id.txtUsername);
             vProgressBar = (ProgressBar) v.findViewById(R.id.imgLoad);
-            vPicture = (ImageView) v.findViewById(R.id.picture);
+            vPicture = (ParseImageView) v.findViewById(R.id.picture);
             vTitle = (TextView) v.findViewById(R.id.txtTitle);
             context = v.getContext();
         }
@@ -68,14 +70,20 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         //holder.mTextView.setText(mDataset[position]);
 
         //TODO fix picture display
-        //TODO Add username to posts
 
         Post p = postList.get(position);
 
         holder.vUsername.setText(p.username);
         holder.vTitle.setText(p.title);
-
-        String imageUrl = p.img.getUrl();
+        holder.vPicture.setParseFile(p.img);
+        holder.vPicture.loadInBackground(new GetDataCallback() {
+            @Override
+            public void done(byte[] data, ParseException e) {
+                holder.vProgressBar.setVisibility(View.INVISIBLE);
+                holder.vPicture.setVisibility(View.VISIBLE);
+            }
+        });
+        /*String imageUrl = p.img.getUrl();
         Uri imageUri = Uri.parse(imageUrl);
 
         InputStream imageStream = null;
@@ -88,7 +96,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
 
 
 
-        /*Picasso.with(holder.context).load(imageUri.toString()).into(holder.vPicture, new Callback() {
+        Picasso.with(holder.context).load(imageUri.toString()).into(holder.vPicture, new Callback() {
             @Override
             public void onSuccess() {
                 holder.vProgressBar.setVisibility(View.INVISIBLE);
