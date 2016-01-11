@@ -16,6 +16,7 @@ public class AccountActivity extends Activity {
 
     Button signInButton;
     Button signUpButton;
+    Button signOutButton;
 
     String nameString = "Hello, " + User.username ;
     String signInString = "You aren't logged in right now!";
@@ -32,6 +33,7 @@ public class AccountActivity extends Activity {
         signUpText = (TextView) findViewById(R.id.signUpText);
         signInButton = (Button) findViewById(R.id.signInButton);
         signUpButton = (Button) findViewById(R.id.signUpButton);
+        signOutButton = (Button) findViewById(R.id.signOutButton);
 
 
         nameText.setText(nameString);
@@ -43,10 +45,12 @@ public class AccountActivity extends Activity {
         signUpText.setVisibility(View.GONE);
         signInButton.setVisibility(View.GONE);
         signUpButton.setVisibility(View.GONE);
+        signOutButton.setVisibility(View.GONE);
 
         //Viewer Logic
         if(User.isSignedIn){
             nameText.setVisibility(View.VISIBLE);
+            signOutButton.setVisibility(View.VISIBLE);
         }
         else {
             signInText.setVisibility(View.VISIBLE);
