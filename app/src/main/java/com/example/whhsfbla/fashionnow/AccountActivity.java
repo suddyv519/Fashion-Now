@@ -42,6 +42,8 @@ public class AccountActivity extends Activity {
         signUpButton.setVisibility(View.GONE);
         signOutButton.setVisibility(View.GONE);
 
+        ViewerLogic();
+
         //TextView and Button instantiations and setting texts
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
