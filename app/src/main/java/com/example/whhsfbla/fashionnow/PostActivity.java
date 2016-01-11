@@ -41,7 +41,7 @@ public class PostActivity extends Activity {
     private HashMap events;
     private String imageURL;
     private Uri uploadFileUri;
-
+    private Bitmap bitmap;
     TextView txtPostTitle;
     EditText editText;
     Button btnChoosePic, btnUploadPost;
@@ -133,16 +133,16 @@ public class PostActivity extends Activity {
 
     private void uploadPost() {
         // Locate the image in res > drawable-hdpi
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.id.imgPreview);
+        bitmap = BitmapFactory.decodeResource(getResources(), R.id.imgPreview);
         // Convert it to byte
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         // Compress image to lower quality scale 1 - 100
-        //bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] image = stream.toByteArray();
 
         // Create the ParseFile
-        ParseFile file = new ParseFile("tmpfile.png", image);
-        // Upload the image into Parse Cloud
+        ParseFile file = new ParseFile("image.png",image);
+        // Upload the image into ParseCloud
         file.saveInBackground();
 
         // Create a New Class called "ImageUpload" in Parse
