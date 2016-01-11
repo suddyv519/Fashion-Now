@@ -123,13 +123,13 @@ public class PostActivity extends Activity {
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
         byte[] b = byteArrayOutputStream.toByteArray();
         String base64Image = Base64.encodeToString(b, Base64.DEFAULT);
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.addHeader("Authorization", "Client-ID " + IMGUR_CLIENT_ID);
+        //AsyncHttpClient client = new AsyncHttpClient();
+       //client.addHeader("Authorization", "Client-ID " + IMGUR_CLIENT_ID);
 
-        RequestParams requestParams = new RequestParams();
-        requestParams.add("image", base64Image);
+        //RequestParams requestParams = new RequestParams();
+        //requestParams.add("image", base64Image);
 
-        client.post("https://api.imgur.com/3/image", requestParams, new JsonHttpResponseHandler() {
+        /*client.post("https://api.imgur.com/3/image", requestParams, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, PreferenceActivity.Header[] headers, JSONObject response) {
                 try {
@@ -140,9 +140,7 @@ public class PostActivity extends Activity {
                     e.printStackTrace();
                 }
             }
-        });
+            */
+        }
     }
 
-
-
-}
