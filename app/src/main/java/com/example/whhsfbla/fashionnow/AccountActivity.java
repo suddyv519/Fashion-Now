@@ -14,9 +14,12 @@ public class AccountActivity extends Activity {
     TextView signInText;
     TextView signUpText;
 
-
     Button signInButton;
     Button signUpButton;
+
+    String nameString = "Hello, " + User.username ;
+    String signInString = "You aren't logged in right now!";
+    String signUpString = "Don't have an account?";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +33,10 @@ public class AccountActivity extends Activity {
         signInButton = (Button) findViewById(R.id.signInButton);
         signUpButton = (Button) findViewById(R.id.signUpButton);
 
-        nameText.setText("Hello, " + User.username);
-        signInText.setText("You aren't logged in right now!");
-        signUpText.setText("Don't have an account?");
-        signInButton.setText("Sign In Now");
-        signInButton.setText("Sign Up Now");
+
+        nameText.setText(nameString);
+        signInText.setText(signInString);
+        signUpText.setText(signUpString);
 
         nameText.setVisibility(View.GONE);
         signInText.setVisibility(View.GONE);
