@@ -42,7 +42,7 @@ public class SignUpActivity extends Activity {
                         if (e == null) {
                             // Show a simple Toast message upon successful registration
                             Toast.makeText(getApplicationContext(),
-                                    "Successfully Signed up, please log in.",
+                                    "Successfully Signed Up!",
                                     Toast.LENGTH_LONG).show();
 
                             finish();
@@ -61,7 +61,7 @@ public class SignUpActivity extends Activity {
                         if (e == null) {
                             // Show a simple Toast message upon successful registration
                             Toast.makeText(getApplicationContext(),
-                                    "Successfully Signed In",
+                                    "User " + "\"" + User.username + "\"" + " Signed In",
                                     Toast.LENGTH_LONG).show();
                             finish();
                         } else {
