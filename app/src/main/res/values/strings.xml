@@ -18,10 +18,10 @@
         completions."
     </string>
     <string name="title_activity_sign_in">Sign In</string>
-    <string name="title_activity_pic_feed">PicFeed</string>
+    <string name="title_activity_pic_feed">Pic Feed</string>
     <string name="title_activity_feed">Feed</string>
-    <string name="title_activity_account">AccountActivity</string>
-    <string name="title_activity_post">PostActivity</string>
+    <string name="title_activity_account">My Account</string>
+    <string name="title_activity_post">Post Activity</string>
     <string name="PARSE_APPLICATION_ID">knaaEIaeENXtURCZ7t43dh7zEOfpFUgQ7pLE0uqy</string>
     <string name="PARSE_CLIENT_KEY">vzBNnoKg3Ls3b4dfd6kV1SDYOeB9WfqMwvVO3hHF</string>
 </resources>
