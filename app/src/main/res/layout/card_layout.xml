@@ -7,9 +7,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="3dp"
+    android:typeface = "serif"
     android:clickable="true"
-    card_view:cardCornerRadius="1dp"
-    card_view:cardElevation="5dp">
+    card_view:cardCornerRadius="0dp"
+    card_view:cardElevation="5dp"
+    android:background="#3f51b5"
+    card_view:cardPreventCornerOverlap="false">
 
     <RelativeLayout
         android:id="@+id/layout"
@@ -31,11 +34,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:background="#000000"
+            android:background="#643f51b5"
             android:text="Large Text"
+            android:typeface = "monospace"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/primary_text_dark" />
+            android:textColor="@android:color/primary_text_dark"
+            android:layout_alignParentEnd="true" />
 
 
         <FrameLayout
@@ -54,7 +58,11 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:scaleType="fitCenter"
-                android:visibility="visible"/>
+                android:visibility="visible"
+                android:adjustViewBounds="true"
+                android:baselineAlignBottom="true"
+                android:clickable="false"
+                android:cropToPadding="true" />
 
             <ProgressBar
                 android:id="@+id/imgLoad"
@@ -73,8 +81,9 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/frameLayout"
             android:layout_gravity="left|bottom"
-            android:background="#000000"
+            android:background="#643f51b5"
             android:text="New Text"
+            android:typeface = "monospace"
             android:textColor="@android:color/secondary_text_dark"  />
 
     </RelativeLayout>

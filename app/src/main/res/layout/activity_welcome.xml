@@ -25,6 +25,18 @@
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="43dp"
-        android:background="#3f51b5" />
+        android:background="#3f51b5"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Express Yourself"
+        android:id="@+id/textView"
+        android:textStyle="italic"
+        android:textColor="#3f51b5"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
