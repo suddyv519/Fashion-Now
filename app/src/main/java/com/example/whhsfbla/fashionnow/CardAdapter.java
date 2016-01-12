@@ -38,7 +38,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         public ViewHolder(View v) {
             super(v);
             vUsername = (TextView) v.findViewById(R.id.txtUsername);
-            vProgressBar = (ProgressBar) v.findViewById(R.id.imgLoad);
+            //vProgressBar = (ProgressBar) v.findViewById(R.id.imgLoad);
             vPicture = (ParseImageView) v.findViewById(R.id.picture);
             vTitle = (TextView) v.findViewById(R.id.txtTitle);
             context = v.getContext();
@@ -79,7 +79,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         holder.vPicture.loadInBackground(new GetDataCallback() {
             @Override
             public void done(byte[] data, ParseException e) {
-                holder.vProgressBar.setVisibility(View.INVISIBLE);
+               // holder.vProgressBar.setVisibility(View.INVISIBLE);
                 holder.vPicture.setVisibility(View.VISIBLE);
             }
         });
